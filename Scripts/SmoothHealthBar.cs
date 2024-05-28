@@ -12,15 +12,11 @@ public class SmoothHealthBar : HealthUIBase
 
     protected override void UpdateHealthUI(float currentHealth, float maxHealth)
     {
-        StartSmoothBarUpdate(currentHealth, maxHealth);
-    }
-
-    private void StartSmoothBarUpdate(float currentHealth, float maxHealth)
-    {
-        if (_currentCoroutine != null)
+        if(_currentCoroutine != null)
         {
             StopCoroutine(_currentCoroutine);
         }
+
         _currentCoroutine = StartCoroutine(UpdateSmoothHealthBar(currentHealth, maxHealth));
     }
 
@@ -33,6 +29,7 @@ public class SmoothHealthBar : HealthUIBase
             _smoothHealthBar.value = Mathf.Lerp(_smoothHealthBar.value, targetValue, Time.deltaTime * _smoothSpeed);
             yield return null;
         }
+
         _smoothHealthBar.value = targetValue;
     }
 }

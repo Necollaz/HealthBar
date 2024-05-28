@@ -244,6 +244,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13905346}
   m_CullTransparentMesh: 0
+--- !u!1 &75783273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 75783275}
+  - component: {fileID: 75783274}
+  m_Layer: 0
+  m_Name: TextHealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &75783274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75783273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7536472dcd1bb45ef98770cd8de76cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 2132002818}
+  _healthText: {fileID: 1338521659}
+--- !u!4 &75783275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75783273}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -25.978924, y: -16.016352, z: 0.0032119304}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1338521657}
+  m_Father: {fileID: 1096481815}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282627856
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,8 +909,8 @@ RectTransform:
   m_Children:
   - {fileID: 1141900586}
   - {fileID: 1186847820}
-  - {fileID: 1338521657}
   - {fileID: 1850978830}
+  - {fileID: 75783275}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1218,6 +1265,7 @@ MonoBehaviour:
   _takeDamageButton: {fileID: 671176051}
   _healButton: {fileID: 13905348}
   _damageAmount: 10
+  _healthImproving: 20
 --- !u!4 &1285810591
 Transform:
   m_ObjectHideFlags: 0
@@ -1244,7 +1292,7 @@ GameObject:
   - component: {fileID: 1318321521}
   - component: {fileID: 1318321520}
   m_Layer: 0
-  m_Name: HealthUIManager
+  m_Name: HealthbarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1263,7 +1311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 2132002818}
-  _healthText: {fileID: 1338521659}
   _healthBar: {fileID: 1141900587}
 --- !u!4 &1318321521
 Transform:
@@ -1305,16 +1352,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338521656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0032119304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1096481815}
+  m_Father: {fileID: 75783275}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.4, y: -47.4}
+  m_AnchoredPosition: {x: 22.578924, y: -31.383652}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1338521658
@@ -1632,7 +1679,7 @@ GameObject:
   - component: {fileID: 2012675897}
   - component: {fileID: 2012675896}
   m_Layer: 0
-  m_Name: SmoothHealthUIManager
+  m_Name: SmoothHealthBarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1652,7 +1699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 2132002818}
   _smoothHealthBar: {fileID: 1186847819}
-  _smoothSpeed: 1
+  _smoothSpeed: 3
 --- !u!4 &2012675897
 Transform:
   m_ObjectHideFlags: 0
@@ -1831,7 +1878,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2ac780daf974145924f3cf5c1a760e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthImproving: 20
 --- !u!4 &2132002819
 Transform:
   m_ObjectHideFlags: 0
@@ -1853,8 +1899,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1096481815}
   - {fileID: 282627859}
+  - {fileID: 1096481815}
   - {fileID: 2132002819}
   - {fileID: 1318321521}
   - {fileID: 2012675897}

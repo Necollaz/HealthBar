@@ -5,16 +5,16 @@ public class Health : MonoBehaviour
 {
     private int _minHealth;
 
-    public int CurrentHealth { get; private set; }
-    public int MaxHealth { get; private set; }
+    public int Current { get; private set; }
+    public int Max { get; private set; }
 
     public event Action CharecterDied;
     public event Action<float, float> HealthChanged;
 
     private void Awake()
     {
-        MaxHealth = 100;
-        CurrentHealth = MaxHealth;
+        Max = 100;
+        Current = Max;
     }
 
     public void TakeDamage(int amount)
@@ -39,10 +39,10 @@ public class Health : MonoBehaviour
 
     private void UpdateHealth(int healthChange)
     {
-        CurrentHealth = Mathf.Clamp(CurrentHealth + healthChange, _minHealth, MaxHealth);
-        HealthChanged?.Invoke(CurrentHealth, MaxHealth);
+        Current = Mathf.Clamp(Current + healthChange, _minHealth, Max);
+        HealthChanged?.Invoke(Current, Max);
 
-        if (CurrentHealth <= _minHealth)
+        if (Current <= _minHealth)
         {
             CharecterDied?.Invoke();
         }
